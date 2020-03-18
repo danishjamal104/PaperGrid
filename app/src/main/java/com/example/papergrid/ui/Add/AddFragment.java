@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.papergrid.R;
@@ -20,8 +21,7 @@ public class AddFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        AddViewModel =
-                ViewModelProviders.of(this).get(AddViewModel.class);
+        AddViewModel = new ViewModelProvider(this).get(AddViewModel.class);
         View root = inflater.inflate(R.layout.fragment_add, container, false);
         final TextView textView = root.findViewById(R.id.text_dashboard);
         AddViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {

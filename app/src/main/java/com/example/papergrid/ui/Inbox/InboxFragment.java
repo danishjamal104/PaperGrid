@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.papergrid.R;
@@ -21,8 +22,7 @@ public class InboxFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        InboxViewModel =
-                ViewModelProviders.of(this).get(InboxViewModel.class);
+        InboxViewModel = new ViewModelProvider(this).get(InboxViewModel.class);
         View root = inflater.inflate(R.layout.fragment_inbox, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
         InboxViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
